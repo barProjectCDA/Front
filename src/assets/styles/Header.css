@@ -1,0 +1,105 @@
+/* Header */
+.header {
+    display: flex;
+    /* justify-content: space-between; */
+    gap: 20%;
+    align-items: center;
+    background-color: RGB(49, 68, 43);
+    color: white;
+    padding: 15px;
+    position: relative;
+}
+
+/* Titre */
+.header-title {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+/* Bouton menu burger */
+.burger-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.burger-menu .bar {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+}
+
+
+
+/* Menu */
+.nav-links {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    height: 100vh;
+    width: 80%;
+    background-color: white;
+    transition: transform 0.5s ease-in-out;
+    transform: translateX(-100%);
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1;
+}
+
+
+.nav-links .bar{
+    position: absolute;
+    top: 20px;
+    left: 90%;
+    width: 25px;
+    height: 4px;
+    border-radius: 50px;
+    background-color: #000;
+}
+.nav-links .bar:nth-child(1) {
+    transform: rotate(45deg);
+}
+
+.nav-links .bar:nth-child(2) {
+    transform: rotate(-45deg);
+}
+
+.nav-links.active {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+.nav-links.closing {
+    transform: translateX(-100%);
+    opacity: 1;
+    visibility: visible;
+}
+
+.nav-links ul {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    gap: 10%;
+    list-style: none;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin: 0px 50px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #000;
+    font-size: 18px;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
