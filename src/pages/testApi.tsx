@@ -1,4 +1,4 @@
-import ApiMultiObjet from "../components/apiMultiObjet"
+import ApiMultiObjet from "../components/ApiMultiObjet"
 import ApiSimple from "../components/ApiSimple";
 
 
