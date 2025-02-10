@@ -6,7 +6,6 @@ type BitcoinPrice = {
             rate_float: number;
             description: string;
         };
-
     };
 };
 

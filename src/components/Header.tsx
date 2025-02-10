@@ -19,22 +19,17 @@ const Header = () => {
 
     return (
         <header className="header">
-            
 
             {/* Bouton menu burger */}
-            <button 
-                className={`burger-menu ${isOpen ? "open" : ""}`} 
-                onClick={toggleMenu}
-            >
+            <button className={`burger-menu ${isOpen ? "open" : ""}`} onClick={toggleMenu}>
                 <span className="bar"></span>
                 <span className="bar"></span>
                 <span className="bar"></span>
             </button>
 
-
             <h1 className="header-title">Cactus Café</h1>
 
-            {/* Menu avec animation de fermeture */}
+            {/* Menu */}
             <nav className={`nav-links ${isOpen ? "active" : ""} ${closing ? "closing" : ""}`}>
                     
                     <div className="divBar" onClick={toggleMenu}>
@@ -43,10 +38,10 @@ const Header = () => {
                     </div>
                 
                 <ul>
-                    <li><a href="#">Accueil &#11016;</a></li>
+                    <li><a href="/">Accueil &#11016;</a></li>
                     <li><a href="#">Utilisateurs &#11016;</a></li>
                     <li><a href="#">Services &#11016;</a></li>
-                    <li><a href="#">Déconnexion &#11016;</a></li>
+                    <li><a href="/Connexion">Déconnexion &#11016;</a></li>
                 </ul>
             </nav>
         </header>
