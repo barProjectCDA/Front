@@ -1,5 +1,5 @@
 // import './assets/styles/App.css';
-
+import './assets/styles/App.css'
 import AppRouter from './router/AppRouter';
 import Header from './components/Header';
 
