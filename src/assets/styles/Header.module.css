@@ -11,14 +11,14 @@
 }
 
 /* Titre */
-.header-title {
+.headerTitle {
     font-size: 35px;
     /* font-weight: bold; */
     font-weight: 300;
 }
 
 /* Bouton menu burger */
-.burger-menu {
+.burgerMenu {
     display: flex;
     flex-direction: column;
     gap: 5px;
@@ -27,7 +27,7 @@
     cursor: pointer;
 }
 
-.burger-menu .bar {
+.burgerMenu span {
     width: 40px;
     height: 7px;
     border-radius: 50px;
@@ -35,7 +35,7 @@
 }
 
 /* Menu */
-.nav-links {
+.navLinks {
     position: absolute;
     top: 0px;
     left: 0;
@@ -49,7 +49,7 @@
     z-index: 1;
 }
 
-.nav-links .bar{
+.navLinks span{
     position: absolute;
     top: 20px;
     left: 90%;
@@ -58,27 +58,27 @@
     border-radius: 50px;
     background-color: #000;
 }
-.nav-links .bar:nth-child(1) {
+.navLinks span:nth-child(1) {
     transform: rotate(45deg);
 }
 
-.nav-links .bar:nth-child(2) {
+.navLinks span:nth-child(2) {
     transform: rotate(-45deg);
 }
 
-.nav-links.active {
+.navLinks.active {
     transform: translateX(0);
     opacity: 1;
     visibility: visible;
 }
 
-.nav-links.closing {
+.navLinks.closing {
     transform: translateX(-100%);
     opacity: 1;
     visibility: visible;
 }
 
-.nav-links ul {
+.navLinks ul {
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -89,16 +89,16 @@
     padding: 0;
 }
 
-.nav-links li {
+.navLinks li {
     margin: 0px 50px;
 }
 
-.nav-links a {
+.navLinks a {
     text-decoration: none;
     color: #000;
     font-size: 18px;
 }
 
-.nav-links a:hover {
+.navLinks a:hover {
     text-decoration: underline;
 }

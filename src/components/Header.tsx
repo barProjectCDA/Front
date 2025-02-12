@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../assets/styles/Header.css"; // Import du CSS
+import styles from "../assets/styles/Header.module.css"; // Import du CSS
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -18,23 +18,23 @@ const Header = () => {
     };
 
     return (
-        <header className="header">
+        <header className={styles.header}>
 
             {/* Bouton menu burger */}
-            <button className={`burger-menu ${isOpen ? "open" : ""}`} onClick={toggleMenu}>
-                <span className="bar"></span>
-                <span className="bar"></span>
-                <span className="bar"></span>
+            <button className={`${styles.burgerMenu} ${isOpen ? styles.open : ""}`} onClick={toggleMenu}>
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
 
-            <h1 className="header-title">Cactus Café</h1>
+            <h1 className={styles.headerTitle}>Cactus Café</h1>
 
             {/* Menu */}
-            <nav className={`nav-links ${isOpen ? "active" : ""} ${closing ? "closing" : ""}`}>
+            <nav className={`${styles.navLinks} ${isOpen ? styles.active : ""} ${closing ? styles.closing : ""}`}>
                     
-                    <div className="divBar" onClick={toggleMenu}>
-                        <span className="bar"></span>
-                        <span className="bar"></span>
+                    <div className={styles.divBar} onClick={toggleMenu}>
+                        <span></span>
+                        <span></span>
                     </div>
                 
                 <ul>

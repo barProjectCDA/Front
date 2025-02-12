@@ -5,6 +5,8 @@ import TestApi from "../pages/testApi";
 import Accueil from "../pages/Accueil";
 import Recap from "../pages/Recap";
 import DetailCommande from "../pages/DetailCommande";
+
+
 const AppRouter = () => {
     return (
         <BrowserRouter>

@@ -1,0 +1,39 @@
+.commandesTable {
+    width: 90vw;
+    margin: 30px auto;
+    border-collapse: collapse;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    height: 600px;
+}
+
+.commandesTable th {
+    padding: 12px;
+    background-color: #9DB5B2;
+    border-bottom: 1px solid #ddd;
+    color: #fff;
+}
+
+.buttonsContainer {
+    display: flex;
+    justify-content: center;
+    gap: 2%;
+}
+
+.btnRetour,
+.btnValider {
+    background-color: #9DB5B2;
+    padding: 14px 28px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    width: 165px;
+    text-align: center;
+    color: white;
+}
+
+.btnRetour a{
+    color: white;
+    text-decoration: none;
+}

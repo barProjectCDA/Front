@@ -6,7 +6,7 @@ function testApi() {
     
     return(
         <div>
-            <ApiMultiObjet/>
+            {/* <ApiMultiObjet/> */}
             <ApiSimple/>
         </div>
     )

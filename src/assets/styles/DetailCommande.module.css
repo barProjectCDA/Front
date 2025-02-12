@@ -1,31 +1,32 @@
-.detail-table {
+.detailTable {
     width: 90%;
     margin: 10px auto;
-    border-collapse: se;
+    /* border-collapse: collapse; */
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     height: 600px;
     overflow-y: auto;
     
 }
 
-.detail-table th,
-.detail-table td {
+.detailTable th,
+.detailTable td {
     padding: 12px;
     border-bottom: 1px solid #ddd;
     text-align: center;
 }
 
-.detail-table th {
+.detailTable th {
     background-color: #9DB5B2;
     font-weight: bold;
 }
 
-.detail-table thead {
+.detailTable thead {
     position: sticky;
     top: 0;
     background-color: white;
 }
-.buttons-container {
+
+.buttonsContainer {
     display: flex;
     justify-content: center;
     gap: 15px;
@@ -39,15 +40,14 @@
     font-size: 16px;
     border: none;
     border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s;
 }
 
 .btn:hover {
     background-color: #ddd;
 }
+
 .tableaux{
     width: 50%;
     display:inline-block;
     vertical-align:top;
-  }
+}

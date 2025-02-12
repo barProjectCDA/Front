@@ -1,33 +1,33 @@
-import '../assets/styles/Home.css'
+import styles from '../assets/styles/Connexion.module.css';
 
-import cactuslogo from '../assets/svg/cactus.svg'
+import cactuslogo from '../assets/svg/cactus.svg';
 
-import Footer from '../components/Footer'
+import Footer from '../components/Footer';
 
 
 function Connexion() {
     
     return (
         <>
-            <div className='Connexion'>
-                <div className='h2CO'>
+            <div className={styles.Connexion}>
+                <div className={styles.h2CO}>
                     <p>Connexion</p>
                 </div>
 
-                <div className='inputs'>
+                <div className={styles.inputs}>
                     <input placeholder='Identifiant:' type="text" />
                     <input placeholder='Mot de passe:' type="password" />
                 </div>
 
-                <div className='button'>
-                    <button><a href="#">Valider</a></button>
+                <div className={styles.button}>
+                    <button><a href="/">Valider</a></button>
                 </div>
 
-                <div className='besoinAide'>
+                <div className={styles.besoinAide}>
                     <p>Besoin d'aide ?</p>
                     <a href="#">Contacter le support</a>
                 </div>
-                <div className='logoCactus'>
+                <div className={styles.logoCactus}>
                     <img src={cactuslogo} alt="logo cactus" />
                     <p>By myEasyApp</p>
                 </div>

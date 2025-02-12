@@ -1,22 +1,27 @@
 import useFetch from "../hooks/Fetch";
 
 type APIchat = {
-    url: string;
+    flagId: number;
+    flag: string;
 };
 
 const ApiSimple = () => {
 
-    const { data: APIchat, loading, error } = useFetch<APIchat[]>("https://api.thecatapi.com/v1/images/search");
+    const { data: APIchat, loading, error } = useFetch<APIchat[]>("http://localhost:8080/api/auth/flags");
 
     if (loading) return <p>Chargement...</p>;
     if (error) return <p>Erreur : {error}</p>;
 
     return (
+        
         <div>
             <h1>API simple</h1>
             <div>
                 {APIchat?.slice(0, 5).map((APIchat) => (
-                    <img src={APIchat.url}/>
+                <>    
+                    <p>{APIchat.flagId}</p>
+                    <p>{APIchat.flag}</p>
+                </>
                 ))}
             </div>
         </div>
