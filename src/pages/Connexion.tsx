@@ -6,9 +6,52 @@ import Footer from '../components/Footer';
 
 import { Link } from "react-router-dom";
 
+import { useState, useEffect } from "react";
+
+import { ToastContainer, toast } from 'react-toastify';
+
 
 function Connexion() {
+
+        const notify = () => toast.error("Erreur", {position: "bottom-center", className: "toastError", progressClassName:"progressToastError", closeButton: false});
     
+        const [data, setData] = useState<any>(null);
+        const [loading, setLoading] = useState(false);
+        const [error, setError] = useState<string | null>(null);
+
+        const [username, setUsername] = useState<string>('');
+        const [password, setPassword] = useState<string>('');
+    
+        const handleLogin = async () => {
+            setLoading(true);
+            setError(null);
+
+            try {
+                const response = await fetch('http://localhost:8081/auth/login', {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json"},
+                    body: JSON.stringify({ username, password }),
+                });
+                
+
+                if (!response.ok) {
+                    throw new Error("Identifiants incorrects ou problème serveur");
+                }
+
+                const data = await response.json();
+                setData(data);
+                console.log(data)
+            } 
+            catch (error: any) {
+                console.error('Erreur de connexion:', error);
+                setError(error.message);
+            } 
+            finally {
+                setLoading(false);
+            }
+        }
+
+        
     return (
         <>
             <div className={styles.Connexion}>
@@ -17,12 +60,15 @@ function Connexion() {
                 </div>
 
                 <div className={styles.inputs}>
-                    <input placeholder='Identifiant:' type="text" />
-                    <input placeholder='Mot de passe:' type="password" />
+                    <input placeholder='Identifiant:'  value={username} onChange={(e) => setUsername(e.target.value)} type="text" />
+                    <input placeholder='Mot de passe:' value={password} onChange={(e) => setPassword(e.target.value)} type="password" />
                 </div>
 
                 <div className={styles.button}>
-                    <button><Link to="/" className={styles.btn}>Valider</Link></button>
+                    <button onClick={notify}  disabled={loading}>
+                        Valider
+                    </button>
+                        <ToastContainer />
                 </div>
 
                 <div className={styles.besoinAide}>
