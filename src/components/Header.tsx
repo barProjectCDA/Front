@@ -1,5 +1,6 @@
 import { useState } from "react";
-import styles from "../assets/styles/Header.module.css"; // Import du CSS
+import styles from "../assets/styles/Header.module.css"; 
+import { Link } from "react-router-dom";// Import du CSS
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -37,12 +38,12 @@ const Header = () => {
                         <span></span>
                     </div>
                 
-                <ul>
-                    <li><a href="/">Accueil &#11016;</a></li>
-                    <li><a href="#">Utilisateurs &#11016;</a></li>
-                    <li><a href="#">Services &#11016;</a></li>
-                    <li><a href="/Connexion">Déconnexion &#11016;</a></li>
-                </ul>
+                    <ul>
+                        <li><Link to="/">Accueil &#11016;</Link></li>
+                        <li><Link to="#">Utilisateurs &#11016;</Link></li>
+                        <li><Link to="#">Services &#11016;</Link></li>
+                        <li><Link to="/Connexion">Déconnexion &#11016;</Link></li>
+                    </ul>
             </nav>
         </header>
     );

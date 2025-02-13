@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {Routes, Route } from "react-router-dom";
 
 import Connexion from "../pages/Connexion";
 import TestApi from "../pages/testApi";
@@ -9,7 +9,7 @@ import DetailCommande from "../pages/DetailCommande";
 
 const AppRouter = () => {
     return (
-        <BrowserRouter>
+        
             <Routes>
                 <Route path="/" element={<Accueil />} />
                 <Route path="/Recap" element={<Recap  />} />
@@ -18,7 +18,7 @@ const AppRouter = () => {
                 <Route path="/testApi" element={<TestApi />} />
 
             </Routes>
-        </BrowserRouter>
+     
     );
 };
 

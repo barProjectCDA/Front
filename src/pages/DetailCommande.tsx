@@ -1,4 +1,5 @@
 import styles from '../assets/styles/DetailCommande.module.css';
+import { Link } from "react-router-dom";
 
 function DetailCommande() {
     return (
@@ -30,7 +31,7 @@ function DetailCommande() {
             </div>
 
             <div className={styles.buttonsContainer}>
-                <button type="button" className={styles.btn}><a href="/Recap">Retour</a></button>
+                <button type="button" className={styles.btn}><Link to="/Recap">Retour</Link></button>
                 <button type="submit" className={styles.btn}>All</button>
                 <button type="button" className={styles.btn}>Del</button>
                 <button type="submit" className={styles.btn}>OK</button>

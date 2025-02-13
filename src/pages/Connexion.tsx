@@ -4,6 +4,8 @@ import cactuslogo from '../assets/svg/cactus.svg';
 
 import Footer from '../components/Footer';
 
+import { Link } from "react-router-dom";
+
 
 function Connexion() {
     
@@ -20,12 +22,12 @@ function Connexion() {
                 </div>
 
                 <div className={styles.button}>
-                    <button><a href="/">Valider</a></button>
+                    <button><Link to="/" className={styles.btn}>Valider</Link></button>
                 </div>
 
                 <div className={styles.besoinAide}>
                     <p>Besoin d'aide ?</p>
-                    <a href="#">Contacter le support</a>
+                    <Link to="#" className={styles.link}>Contacter le support</Link>
                 </div>
                 <div className={styles.logoCactus}>
                     <img src={cactuslogo} alt="logo cactus" />
