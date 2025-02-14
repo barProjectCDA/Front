@@ -8,6 +8,10 @@
     margin-top: 20px;
 }
 
+.toastError{
+    color: black;
+}
+
 .h2CO{
     font-size: 35px;
     color: #626262;

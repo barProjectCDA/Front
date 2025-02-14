@@ -1,16 +1,16 @@
-import ApiSimple from "../components/ApiSimple";
+// import ApiSimple from "../components/ApiSimple";
 
 
-function testApi() {
+// function testApi() {
     
-    return(
-        <div>
-            {/* <ApiMultiObjet/> */}
-            <ApiSimple/>
-        </div>
-    )
-}
+//     return(
+//         <div>
+//             {/* <ApiMultiObjet/> */}
+//             <ApiSimple/>
+//         </div>
+//     )
+// }
 
-export default testApi
+// export default testApi
 
 
