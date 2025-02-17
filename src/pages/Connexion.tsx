@@ -1,52 +1,31 @@
 import styles from '../assets/styles/Connexion.module.css';
- 
+
 import cactuslogo from '../assets/svg/cactus.svg';
- 
+
 import Footer from '../components/Footer';
 
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import {useState} from "react";
 
-import {showErrorToast, showSuccessToast} from '../components/ToastNotification';
+import { useFetch, Method } from '../hooks/Fetch';
+
+
 
 function Connexion() {
 
-        const navigate = useNavigate();
-        const [loading, setLoading] = useState(false);
-        const [username, setUsername] = useState<string>('');
-        const [password, setPassword] = useState<string>('');
+    const navigate = useNavigate();
+    const {runFetch, loading} = useFetch<string>("http://localhost:8081/auth/login", Method.Post);
+    const [username, setUsername] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
 
-        const handleLogin = async () => {
-            setLoading(true);
-   
-            try {
-                const response = await fetch('http://localhost:8081/auth/login', {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json"},
-                    body: JSON.stringify({ username, password }),
-                });
+    const handleLogin = async () => {
+        const response = await runFetch({ username, password });
 
-                const data = await response.json();
-
-                if (!response.ok) {
-                    showErrorToast(data.message);
-                }
-                else{
-                    showSuccessToast(data.message);
-                    localStorage.setItem("token", data.token)
-                    navigate('/')
-                    console.log(data);
-                }
-
-            }
-            catch (error: any) {
-                console.error('Erreur de connexion:', error);
-                showErrorToast(error)
-            }
-            finally {
-                setLoading(false);
-            }
+        if (response && response.token) {
+            localStorage.setItem("token", response.token);
+            navigate('/');
+        }
         };
 
         return (
