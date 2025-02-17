@@ -1,0 +1,77 @@
+.servicesContainer {
+    background-color: #5c8f4d;
+    color: white;
+    text-align: center;
+    width: 80%;
+    height: 50px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 10px;
+    margin-top: 50px;
+}
+ 
+.servicesPrdouitContainer {
+    background-color: #5c8f4d;
+    color: white;
+    text-align: center;
+    width: 80%;
+    height: 50px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+ 
+.buttonsRetour {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+     margin-top: 10px;
+}
+ 
+.buttonsRetour button {
+    background-color:#4A6C40;
+    color: white;
+    font-size: 24px;
+    padding: 32px 140px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+ 
+ 
+.buttonsNewCategorie button a {
+    color: white;
+    text-decoration: none;
+}
+ 
+ 
+ 
+.buttonsNewCategorie {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+     margin-top: 500px; /* pas de back juste pour le rendu front */
+}
+ 
+.buttonsNewCategorie button {
+    background-color:#4A6C40;
+    color: white;
+    font-size: 16px;
+    padding: 18px 110px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+ 
+ 
+.buttonsRetour button a {
+    color: white;
+    text-decoration: none;
+}

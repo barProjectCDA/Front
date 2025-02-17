@@ -1,0 +1,61 @@
+.servicesContainer {
+    background-color: #5c8f4d;
+    color: white;
+    text-align: center;
+    width: 80%;
+    height: 50px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 10px;
+    margin-top: 50px;
+}
+ 
+.buttonsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 70px;
+ 
+}
+ 
+.buttonsContainer button {
+    background-color: #9DB5B2;
+    border: 1px solid #9DB5B2;
+    border-radius: 8px;
+    margin: 10px 0;  
+    width: 100%;  
+    padding: 35px;
+}
+ 
+.buttonsContainer button a {
+    color: #fff;
+    font-size: 15px;
+    text-decoration: none;
+}
+ 
+ 
+.buttonsRetour {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 200px;  /* pas de back juste pour le rendu front */
+}
+ 
+.buttonsRetour button {
+    background-color:#4A6C40;
+    color: white;
+    font-size: 24px;
+    padding: 32px 150px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+ 
+ 
+.buttonsRetour button a {
+    color: white;
+    text-decoration: none;
+}
