@@ -1,4 +1,5 @@
 import styles from '../assets/styles/Accueil.module.css';
+import { Link } from "react-router-dom";
 
 function Accueil() {
 
@@ -21,9 +22,9 @@ function Accueil() {
 
             <div className={styles.buttonsContainer}>
                 <div>
-                    <button><a href="/Recap">Recap</a></button>
-                    <button><a href="/DetailCommande">DetailCom</a></button>
-                    <button><a href="/testApi">testApi</a></button>
+                    <button><Link to="/Recap" className={styles.link}>Recap</Link></button>
+                    <button><Link to="/DetailCommande" className={styles.link}>DtlCommande</Link></button>
+                    <button><Link to="/testApi" className={styles.link}>testApi</Link></button>
                 </div>
                 <div>
                     <button><a href="/">dfdfd</a></button>
