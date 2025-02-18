@@ -1,8 +1,8 @@
-.servicesContainer {
+.gestioncompteuser {
     background-color: #5c8f4d;
     color: white;
     text-align: center;
-    width: 85%;
+    width: 80%;
     height: 50px;
     margin: auto;
     display: flex;
@@ -13,46 +13,47 @@
 }
 
 .buttonsRetour, 
-.buttonsNew, 
-.buttonsMonCompte {
+.buttonsStat, 
+.buttonsGstionCompteUser {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 10px;
+}
+
+.buttonsRetour button, 
+.buttonsStat button, 
+.buttonsGstionCompteUser button {
+    background-color: #4A6C40;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .buttonsRetour button {
-    background-color: #4A6C40;
-    color: white;
     font-size: 24px;
-    padding: 32px 142px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    padding: 32px 140px;
 }
 
-.buttonsNew button, 
-.buttonsMonCompte button {
-    background-color: #4A6C40;
-    color: white;
-    font-size: 16px;
-    width: 37vh;
-    height: 35px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+.buttonsStat button {
+    padding: 10px 150px;
+}
+
+.buttonsGstionCompteUser button {
+    margin: 10px;
+    padding: 28px 48px;
 }
 
 .buttonsRetour button a, 
-.buttonsNew button a, 
-.buttonsMonCompte button a {
+.buttonsStat button a, 
+.buttonsGstionCompteUser button a {
     color: white;
     text-decoration: none;
 }
 
-.categoriesContainer {
+.GestionComptesUserContainer {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;

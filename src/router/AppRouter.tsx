@@ -6,6 +6,8 @@ import ServicesProduit from "../pages/ServiceProduit";
 import Accueil from "../pages/Accueil";
 import Recap from "../pages/Recap";
 import DetailCommande from "../pages/DetailCommande";
+import GestionCompteUser from "../pages/GestionComptesUser";
+import GestionCompte from "../pages/GestionComptes";
 
 
 const AppRouter = () => {
@@ -13,6 +15,8 @@ const AppRouter = () => {
         
             <Routes>
                 <Route path="/" element={<Accueil />} />
+                <Route path="/gestioncompteuser" element={<GestionCompteUser />} />
+                <Route path="/gestioncompte" element={<GestionCompte />} />
                 <Route path="/Recap" element={<Recap  />} />
                 <Route path="/Services" element={<Services />} />
                 <Route path="/ServicesProduit" element={<ServicesProduit />} />
