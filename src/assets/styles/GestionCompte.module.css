@@ -2,7 +2,7 @@
     background-color: #5c8f4d;
     color: white;
     text-align: center;
-    width: 85%;
+    width: 38vh;
     height: 50px;
     margin: auto;
     display: flex;
@@ -38,7 +38,7 @@
     color: white;
     font-size: 16px;
     width: 37vh;
-    height: 35px;
+    height: 40px;
     border: none;
     border-radius: 8px;
     cursor: pointer;

@@ -15,6 +15,8 @@ const AppRouter = () => {
         
             <Routes>
                 <Route path="/" element={<Accueil />} />
+                <Route path="/users/:id" Component={GestionCompteUser} />
+
                 <Route path="/gestioncompteuser" element={<GestionCompteUser />} />
                 <Route path="/gestioncompte" element={<GestionCompte />} />
                 <Route path="/Recap" element={<Recap  />} />

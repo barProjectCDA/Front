@@ -1,21 +1,39 @@
+import { useEffect, useState } from "react";
 import styles from "../assets/styles/GestionCompte.module.css";
 import { Link } from "react-router-dom";
 
-const users = [
-    "User 1", "User 2", "User 3",
-    "User 4", "User 5", "User 6",
-    "User 7", "User 8", "User 9",
-    "User 10", "User 11", "User 12",
-    "User 13", "User 14", "User 15",
-    "User 16", "User 17", "User 18",
-    "User 19", "User 20", "User 21",
-    "User 22", "User 23", "User 24",
-    "User 25", "User 26", "User 27",
-    "User 28", "User 29", "User 30"
-];
+interface User{
+    "userId": number,
+        "firstName": string,
+        "lastName": string,
+        "username": string
+        
+}
 
 
 const GestionCompte = () => {
+
+    const [users, setUsers] = useState([]);
+
+    useEffect( () => {
+
+        const fetchData = async () => {
+            const url = "http://localhost:8081/api/users";
+            try {
+              const response = await fetch(url);
+              if (!response.ok) {
+                throw new Error(`Response status: ${response.status}`);
+              }
+            const json = await response.json();
+            setUsers(json);
+          } catch (error:any) {
+            console.error(error.message);
+          }
+          
+      }
+      fetchData();
+    }, []);
+      
     return (
         <>
             <div className={styles.servicesContainer}>
@@ -23,10 +41,12 @@ const GestionCompte = () => {
             </div>
            
             <div className={styles.categoriesContainer}>
-                {users.map((cat, index) => (
-                    <div key={index} className={styles.categoryItem}>
-                        {cat}
+                {users.map((user:User, index) => (
+                    <Link key={index} to="/services" className={styles.link}>
+                         <div  className={styles.categoryItem}>
+                        {user.username  }
                     </div>
+                    </Link>
                 ))}
             </div>
 
