@@ -1,10 +1,27 @@
-import { useState } from "react";
-import styles from "../assets/styles/Header.module.css"; 
+import { useState, useEffect, useContext } from "react";
+import styles from "../assets/styles/Header.module.css";
 import { Link } from "react-router-dom";// Import du CSS
+import { useAuth } from "../context/Authentication/useAuth";
+
+
 
 const Header = () => {
+
+    const user = useAuth();
     const [isOpen, setIsOpen] = useState(false);
     const [closing, setClosing] = useState(false);
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 800);
+
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 800);
+        };
+
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
 
     const toggleMenu = () => {
         if (isOpen) {
@@ -19,31 +36,42 @@ const Header = () => {
     };
 
     return (
+
         <header className={styles.header}>
-
-            {/* Bouton menu burger */}
-            <button className={`${styles.burgerMenu} ${isOpen ? styles.open : ""}`} onClick={toggleMenu}>
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-
-            <h1 className={styles.headerTitle}>Cactus Café</h1>
-
-            {/* Menu */}
-            <nav className={`${styles.navLinks} ${isOpen ? styles.active : ""} ${closing ? styles.closing : ""}`}>
-                    
-                    <div className={styles.divBar} onClick={toggleMenu}>
-                        <span></span>
-                        <span></span>
-                    </div>
+            <nav className={`${styles.navBar}`}>
+                {user?.authToken != null ? ( 
+                    <>
+                    {isMobile &&
+                        <button className={`${styles.burgerMenu} ${isOpen ? styles.open : ""}`} onClick={toggleMenu}>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </button>
+                    }
                 
-                    <ul>
-                        <li><Link to="/">Accueil &#11016;</Link></li>
-                        <li><Link to="/gestioncompte">Utilisateurs &#11016;</Link></li>
-                        <li><Link to="/Services">Services &#11016;</Link></li>
-                        <li><Link to="/Connexion">Déconnexion &#11016;</Link></li>
-                    </ul>
+                
+
+                {/* Menu */}
+                
+                    
+                    <div className={`${styles.navLinks} ${isOpen ? styles.active : ""} ${closing ? styles.closing : ""}`}>
+                            
+                            <div className={styles.closeDiv} onClick={toggleMenu}>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        
+                            <ul>
+                                <li><Link to="/">Accueil </Link></li>
+                                <li><Link to="/gestioncompte">Utilisateurs </Link></li>
+                                <li><Link to="/Services">Services </Link></li>
+                                <li><Link to="/log">Déconnexion </Link></li>
+                            </ul>
+                    </div>
+                    </>
+                ) : null }
+
+                <p className={`${styles.headerTitle}`}>Cactus Café</p>
             </nav>
         </header>
     );

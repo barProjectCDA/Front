@@ -1,9 +1,12 @@
 .footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #2A2A2A;
     color: white;
     text-align: center;
-    padding: 35px;
-    position: fixed;
-    bottom: 0;
+    height: 90px;
+    max-height: 10vh;
     width: 100%;
+    margin-top: auto;
 }

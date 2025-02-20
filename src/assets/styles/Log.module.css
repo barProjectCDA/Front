@@ -1,0 +1,166 @@
+.connection{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 5%;
+    margin-block:20px;
+}
+
+.connected .divConnection{
+    flex: 1;
+    align-items: center;
+}
+
+.disconnected .divConnection{
+
+}
+
+.title{
+    font-weight: 400;
+    font-size: 24px;
+    color: #626262;
+    margin-bottom: 5%;
+}
+
+.divConnection{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    width: 80%;
+    max-width: 300px;
+}
+
+
+.toastError{
+    color: black;
+}
+
+
+.inputs{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.inputs input{
+    padding: 10px;
+    border: 1px solid #9DB5B2;
+    border-radius: 8px;
+    max-width: 400px;
+
+}
+
+.submitConnect{
+    padding: 8px 18px;
+    margin-top: 12%;
+    background-color: #9DB5B2;
+    border: 0px solid;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: none;
+    color: white;
+}
+
+.submitConnect:hover, .submitDisconnect:hover{
+    background-color: #4A6C40;;
+}
+
+.submitDisconnect{
+    padding: 8px 18px;
+    background-color: #9DB5B2;
+    border: 0px solid;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: none;
+    color: white;
+}
+
+
+
+
+.needHelp{
+    margin-top: 20%;
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+}
+.needHelp a{
+    text-decoration: underline;
+    color: #9DB5B2;
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+.cactusLogo{
+    display: flex;
+    align-items: center;
+    color: #626262;
+    margin-top: 20px;
+    font-size: 12px;
+    font-style: italic;
+    gap:5px;
+}
+
+.cactusLogo img{
+    width: 25px;
+}
+
+
+@media screen and (min-width: 800px) {
+    .connection{
+        flex-direction:row;
+        align-items: center;
+        justify-content: space-between;
+        width: 80%;
+        max-width: 600px;
+    }
+
+    .cactusLogo{
+        flex-direction: column;
+        margin-top: 0;
+    }
+
+    .cactusLogo :nth-child(1){
+        order: 2;
+    }
+
+    .cactusLogo img{
+        width: 90px;
+    }
+}
+
+@media screen and (min-height: 600px) {
+
+
+    .connection{
+        flex: 1;
+    }
+
+
+}
+
+@media screen and (min-height: 700px) {
+
+    .cactusLogo{
+        flex-direction: column;
+    }
+
+    .cactusLogo :nth-child(1) {
+        order: 2;
+    }
+
+    .cactusLogo :nth-child(2) {
+        order: 1;
+    }
+
+
+    .connection{
+        flex: 1;
+    }
+
+}

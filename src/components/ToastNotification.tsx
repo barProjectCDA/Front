@@ -1,7 +1,6 @@
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-// Fonction pour afficher un toast d'erreur
 export const showErrorToast = (message: string) => {
     toast.error(message, {
         position: "bottom-center",
@@ -11,7 +10,6 @@ export const showErrorToast = (message: string) => {
     });
 };
 
-// Fonction pour afficher un toast de succès (au cas où tu en aurais besoin)
 export const showSuccessToast = (message: string) => {
     toast.success(message, {
         position: "bottom-center",
@@ -21,5 +19,4 @@ export const showSuccessToast = (message: string) => {
     });
 };
 
-// Composant ToastContainer global
 export const ToastWrapper = () => <ToastContainer />;
