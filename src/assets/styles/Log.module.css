@@ -19,7 +19,7 @@
 
 .title{
     font-weight: 400;
-    font-size: 24px;
+    font-size: 28px;
     color: #626262;
     margin-bottom: 5%;
 }
@@ -50,6 +50,7 @@
     border: 1px solid #9DB5B2;
     border-radius: 8px;
     max-width: 400px;
+    height: 45px;
 
 }
 
@@ -59,7 +60,7 @@
     background-color: #9DB5B2;
     border: 0px solid;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 20px;
     cursor: pointer;
     box-shadow: none;
     color: white;
@@ -74,7 +75,7 @@
     background-color: #9DB5B2;
     border: 0px solid;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 20px;
     cursor: pointer;
     box-shadow: none;
     color: white;
