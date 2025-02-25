@@ -3,7 +3,7 @@ import Services from "../pages/Services";
 import Log from "../pages/Log";
 import ServicesProduit from "../pages/ServiceProduit";
 // import TestApi from "../pages/testApi";
-import Accueil from "../pages/Accueil";
+import Accueil from "../pages/Home";
 import Recap from "../pages/Recap";
 import DetailCommande from "../pages/DetailCommande";
 import PrivateRoute from "../components/PrivateRoute";
