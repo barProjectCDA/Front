@@ -116,4 +116,9 @@
         height: 6vh;
         width: 35vw;
     }
+    .buttonsGstionCompteUser button{
+        width: 17vw;
+        font-size: 24px;
+
+    }
 }
