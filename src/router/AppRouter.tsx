@@ -20,8 +20,9 @@ const AppRouter = () => {
             <Route element={<PrivateRoute />}>
                 <Route path="/" element={<Accueil />} />
                 <Route path="/users/:id" Component={GestionCompteUser} />
+                 
+                <Route path="/gestioncompteuser/:id" element={<GestionCompteUser />} />
 
-                <Route path="/gestioncompteuser" element={<GestionCompteUser />} />
                 <Route path="/gestioncompte" element={<GestionCompte />} />
                 <Route path="/Recap" element={<Recap  />} />
                 <Route path="/Services" element={<Services />} />
