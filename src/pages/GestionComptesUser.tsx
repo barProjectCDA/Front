@@ -2,7 +2,6 @@ import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import styles from "../assets/styles/GestionCompteUser.module.css";
 
-// Définition de l'interface User
 interface User {
     userId: number;
     firstName: string;
@@ -11,17 +10,11 @@ interface User {
 }
 
 const GestionCompteUser = () => {
-    const { id } = useParams<{ id: string }>(); // Récupération de l'ID de l'utilisateur via useParams
+    const { id } = useParams<{ id: string }>(); 
     const [user, setUser] = useState<User | null>(null);
 
-    useEffect(() => {
-        console.log("ID récupéré:", id);  // Ajout du log pour vérifier l'ID récupéré
+    useEffect(() => { 
         const fetchUserData = async () => {
-            if (!id) {
-                console.error("ID de l'utilisateur manquant");
-                return;
-            }
-
             try {
                 const response = await fetch(`http://localhost:8081/api/users/${id}`);
                 if (!response.ok) {

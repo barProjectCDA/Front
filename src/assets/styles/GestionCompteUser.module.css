@@ -2,7 +2,7 @@
     background-color: #5c8f4d;
     color: white;
     text-align: center;
-    width: 80%;
+    width: 400px;
     height: 50px;
     margin-inline: auto;
     display: flex;
@@ -57,7 +57,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    max-width: 350px;
+    width: 350px;
     height: 425px;
     overflow-y: auto;
     border: 1px solid #ccc;
@@ -75,3 +75,11 @@
     justify-content: center;
     align-items: center;
 }
+.userInfo strong{
+      color: green ;
+}
+.userInfo p{
+    margin-bottom: 10px;
+    color: grey;
+}
+.userInfo{}

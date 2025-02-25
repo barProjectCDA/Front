@@ -36,31 +36,43 @@ const GestionCompte = () => {
       
     return (
         <>
-            <div className={styles.servicesContainer}>
-                <h2>Titre</h2>
-            </div>
-           
-            <div className={styles.categoriesContainer}>
-                {users.map((user:User, index) => (
-                    <Link key={index} to="/services" className={styles.link}>
-                         <div  className={styles.categoryItem}>
-                        {user.username  }
-                    </div>
-                    </Link>
-                ))}
-            </div>
+            <section className={styles.mainContainer}>
+    <div className={styles.servicesContainer}>
+        <h2>Titre</h2>
+    </div>
 
-            <div className={styles.buttonsNew}>
-                <button><Link to="/services" className={styles.link}>New</Link></button>
-            </div>
+    <div className={styles.categoriesContainer}>
+        {users.map((user: User, index) => (
+            <Link key={user.userId} to={`/gestioncompteuser/${user.userId}`} className={styles.link}>
 
-            <div className={styles.buttonsMonCompte}>
-                <button><Link to="/gestioncompteuser" className={styles.link}>Mon Compte</Link></button>
-            </div>
+                <div className={styles.categoryItem}>
+                    {user.username}
+                </div>
+            </Link>
+        ))}
+    </div>
 
-            <div className={styles.buttonsRetour}>
-                <button><Link to="/services" className={styles.link}>Retour</Link></button>
-            </div>
+    <div className={styles.buttonsContainer}>
+        <div className={styles.buttonsNew}>
+            <button>
+                <Link to="/services" className={styles.link}>New</Link>
+            </button>
+        </div>
+
+        <div className={styles.buttonsMonCompte}>
+            <button>
+                <Link to="/gestioncompteuser" className={styles.link}>Mon Compte</Link>
+            </button>
+        </div>
+
+        <div className={styles.buttonsRetour}>
+            <button>
+                <Link to="/services" className={styles.link}>Retour</Link>
+            </button>
+        </div>
+    </div>
+</section>
+
         </>
     );
 };
