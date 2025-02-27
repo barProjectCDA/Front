@@ -15,6 +15,7 @@ export function useFetch<T>(url: string, method: Method) {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [data, setData] = useState<T | null>(null);
+    
 
     const runFetch = async (body: any) => {
         setLoading(true);
@@ -22,8 +23,14 @@ export function useFetch<T>(url: string, method: Method) {
 
         try {
 
+            const token = localStorage.getItem("token");
+
             let options: RequestInit = {
-                method
+                method,
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": token ? `Bearer ${token}` : "",
+                },
             }
 
             if (method === Method.Post) {
@@ -39,12 +46,14 @@ export function useFetch<T>(url: string, method: Method) {
 
             const responseData = await response.json();
 
+            
             if (!response.ok) {
                 throw new Error(responseData.message || "Erreur inconnue");
             }
             setData(responseData);
             showSuccessToast(responseData.message);
             return responseData;
+
         } catch (err: any) {
             setError(err.message);
             showErrorToast(err.message);
@@ -53,5 +62,5 @@ export function useFetch<T>(url: string, method: Method) {
         }
     };
 
-    return { runFetch, loading, error, data };
+    return { runFetch, loading, error, data, setData};
 }
