@@ -36,6 +36,7 @@ function Home() {
     const { runFetch: fetchProduct, loading: loadingProduct, error: errorProduct, data: dataProduct, setData: setDataProduct } = useFetch<Product[]>(`http://localhost:8081/product/category/${searchCategoryId}`, Method.Get)
     const { runFetch, loading, error, data } = useFetch<Category[]>("http://localhost:8081/category", Method.Get)
     const [selectedProducts, setSelectedProducts] = useState<Product[]>([]);
+    const [totalPrice, setTotalPrice] = useState<number>(0);
 
     const handleCategoryClick = (category: Category) => {
         if (category.subCategories && category.subCategories.length > 0) {
@@ -50,6 +51,10 @@ function Home() {
 
     const handleProductClick = (product: Product) => {
         setSelectedProducts(prevProducts => [...prevProducts, product]);
+        calculTotalPrice(product);
+    };
+    const calculTotalPrice = (newProduct: Product) => {
+        setTotalPrice(prevTotal => prevTotal + newProduct.price);
     };
 
     useEffect(() => {
@@ -86,8 +91,8 @@ function Home() {
                     </div>
                 </div>
                 <div className={styles.commandDetails}>
-                    {/* <p className={styles.tableInfo}>Table: {order.client_table.id_client_table}</p>
-                <p className={styles.totalPrice}>Total: {order.total_price()} €</p> */}
+                    <p className={styles.tableInfo}>Table: 1</p>
+                <p className={styles.totalPrice}>Total: {totalPrice} €</p>
                 </div>
             </section>
             <section className={styles.buttonSection}>
