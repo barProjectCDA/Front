@@ -2,7 +2,7 @@
     background-color: #5c8f4d;
     color: white;
     text-align: center;
-    width: 25vw;
+    width: 75vw;
     height: 50px;
     margin: auto;
     display: flex;
@@ -16,7 +16,7 @@
     background-color: #5c8f4d;
     color: white;
     text-align: center;
-    width: 25vw;
+    width: 75vw;
     height: 50px;
     margin: auto;
     display: flex;
@@ -81,7 +81,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    width: 37%;
+    width: 80vw;
     height: 300px;
     overflow-y: auto; 
     border: 1px solid #ccc;
@@ -106,5 +106,24 @@
     }
     .divbtndivbtn{
         width: 50%;
+    }
+    .servicesContainer{
+        width: 35vw;
+    }
+    .servicesPrdouitContainer{
+        width: 35vw;
+    }
+    .categoriesContainer{
+        width: 35vw;
+    }
+    .buttonsRetour button{
+        width: 25vw;
+
+    }
+    .buttonsNewCategorie button{
+        width: 25vw;
+    }
+    .divcomplete{
+        margin: 50px;
     }
 }

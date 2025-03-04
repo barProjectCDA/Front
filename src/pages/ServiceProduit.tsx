@@ -44,7 +44,7 @@ const ServicesProduit = () => {
   return (
     <>
       <section className={styles.servicesContainerSection}>
-        <div>
+        <div className={styles.divcomplete}>
           <div className={styles.servicesContainer}>
             <h2> Service</h2>
           </div>

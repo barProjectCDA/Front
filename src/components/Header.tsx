@@ -78,7 +78,7 @@ const NavBarHome = ({ isMobile, isOpen, toggleMenu, user, closing, handleLinkCli
                 }
                 <div className={`${styles.divButtonTitle}`}>
                     <button className={`${styles.buttonHeader}`}>Tony</button>
-                    <button className={`${styles.buttonHeader}`}>Commandes</button>
+                    <button className={`${styles.buttonHeader}`}><Link to="/commandes" className={styles.commandebtn}>Commandes</Link></button>
                 </div>
 
             </nav>
