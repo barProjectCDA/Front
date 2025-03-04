@@ -1,10 +1,11 @@
+
+
 .servicesContainer {
     background-color: #5c8f4d;
     color: white;
     text-align: center;
-    width: 80%;
+    width: 100%;
     height: 50px;
-    margin: auto;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -40,7 +41,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 200px;  /* pas de back juste pour le rendu front */
+    margin-top: 10vh;  /* pas de back juste pour le rendu front */
 }
  
 .buttonsRetour button {
@@ -58,4 +59,24 @@
 .buttonsRetour button a {
     color: white;
     text-decoration: none;
+}
+
+@media (min-width: 768px){
+    .servicesContainer{
+        height: 7vh;
+    }
+    .buttonsContainer div{
+        display: flex;
+        width: 40vw;
+
+    }
+    .buttonsContainer div button{
+        margin: 5px;
+    }
+    .buttonsContainer div button a {
+        font-size: 24px;
+    }
+    .sectionsContainer{
+        margin-top: 10%;
+    }
 }
