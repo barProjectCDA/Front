@@ -52,8 +52,13 @@ button{
     cursor:default;
 }
 
+.row.product:hover, .row.extra:hover{
+    background-color: #8ba09e;
+    color: white;
+}
+
 .row:focus{
-    background-color: #9DB5B2;
+    background-color: rgb(162, 185, 183);
     color: white;
 }
 
