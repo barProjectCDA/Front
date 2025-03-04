@@ -1,65 +1,21 @@
 import { useEffect, useState } from 'react';
-import styles from '../assets/styles/CommandHub.module.css';
-import { Method, useFetch } from '../hooks/Fetch';
+import styles from '../../assets/styles/CommandHub.module.css'
+import { Method, useFetch } from '../../hooks/Fetch';
+import React from 'react';
+import { ExtraModal } from './ExtraModal';
+import { ListCard } from './ListCard';
+import { Category, Product, Extra} from './interfaces';
 
-interface Category {
-    categoryId: number;
-    name_category: string;
-    subCategories: Category[];
-}
-
-interface Extra {
-    idExtra: number;
-    extraName: string;
-    extraPrice: number;
-}
-
-interface Product {
-    productId: number;
-    name: string;
-    price: number;
-    extras: Extra[];
-}
-
-interface FetchProduct {
-    data: Product[] | null;
-    error: String | null;
-    loading: boolean
-}
-
-interface ListCardProps extends FetchProduct {
-    categoryId: number | null;
-    subCategories: Category[];
-    handleCategoryClick: (category: Category) => void;
-    handleProductClick: (product: Product) => void;
-}
-
-interface ExtraModalProps {
-    selectedProduct: null | Product;
-    addToOrder: (product: Product, selectedExtras: Extra[]) => void;
-    setIsModalOpen: (value: boolean) => void;
-    isModalOpen: boolean;
-    setSelectedExtras: (value: Extra[]) => void;
-    selectedExtras: Extra[];
-}
-
-interface ButtonExtraProps {
-    setSelectedExtras: (value: Extra[]) => void;
-    selectedExtras: Extra[];
-    extra: Extra;
-}
-
-
-function Home() {
+function CommandHub() {
     const [searchCategoryId, setSearchCategoryId] = useState<number | null>(null);
     const [subCategories, setSubcategories] = useState<Category[]>([]);
     const { runFetch: fetchProduct, loading: loadingProduct, error: errorProduct, data: dataProduct, setData: setDataProduct } = useFetch<Product[]>(`http://localhost:8081/product/category/${searchCategoryId}`, Method.Get);
     const { runFetch, loading, error, data } = useFetch<Category[]>("http://localhost:8081/category", Method.Get);
     const [order, setOrder] = useState<Product[]>([]);
-    const [totalPrice, setTotalPrice] = useState<number>(0);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
     const [selectedExtras, setSelectedExtras] = useState<Extra[]>([]);
+    const [selectedIndex, setSelectedIndex] = useState<Number | null>(null);
 
     const handleCategoryClick = (category: Category) => {
         if (category.subCategories && category.subCategories.length > 0) {
@@ -86,12 +42,34 @@ function Home() {
         const updatedProduct = {
             ...product,
             extras: selectedExtras,
-            price: product.price + selectedExtras.reduce((sum, extra) => sum + extra.extraPrice, 0)
+            price: product.price
         };
-
         setOrder(prevOrder => [...prevOrder, updatedProduct]);
-        setTotalPrice(prevTotal => prevTotal + updatedProduct.price);
     };
+
+    const calculateTotalPrice = () => {
+        return order.reduce((total, product) => {
+            const extrasTotal = product.extras.reduce((sum, extra) => sum + extra.extraPrice, 0);
+            return total + product.price + extrasTotal;
+        }, 0);
+    };
+
+    const cancelProduct = () => {
+        if (!selectedProduct) return;
+
+        setOrder((prevOrder) => prevOrder.filter((_, index) => index !== selectedIndex));
+        setSelectedProduct(null);
+    };
+
+    const resetSelectedIndex = (e: any) => {
+        if (e.relatedTarget?.name === "cancelButton") {
+            cancelProduct();
+        }
+        else {
+            setSelectedIndex(null);
+            setSelectedProduct(null);
+        }
+    }
 
     useEffect(() => {
         runFetch(null);
@@ -115,10 +93,10 @@ function Home() {
                         <div className={styles.columnPrice}><p>Prix</p></div>
                         <div className={styles.columnState}><p>Payé</p></div>
                     </div>
-                    <div className={styles.overflowTable}>
+                    <div onBlur={resetSelectedIndex} className={styles.overflowTable}>
                         {order.map((product, index) => (
-                            <>
-                                <div tabIndex={0} key={index} className={styles.row}>
+                            <React.Fragment key={index}>
+                                <div onFocus={() => { { setSelectedProduct(product), setSelectedIndex(index) } }} tabIndex={0} key={index} className={styles.row}>
                                     <div className={styles.columnNumber}><p>{index + 1}</p></div>
                                     <div className={styles.columnProduct}><p>{product.name}</p></div>
                                     <div className={styles.columnPrice}><p>{product.price} €</p></div>
@@ -132,14 +110,14 @@ function Home() {
                                         <div className={styles.columnState}><p></p></div>
                                     </div>
                                 ))}
-                            </>
+                            </React.Fragment>
                         )
                         )}
                     </div>
                 </div>
                 <div className={styles.commandDetails}>
                     <p className={styles.tableInfo}>Table: 1</p>
-                    <p className={styles.totalPrice}>Total: {totalPrice.toFixed(2)} €</p>
+                    <p className={styles.totalPrice}>Total: {calculateTotalPrice().toFixed(2)} €</p>
                 </div>
                 <ExtraModal
                     selectedProduct={selectedProduct}
@@ -154,7 +132,7 @@ function Home() {
                 <div className={styles.staticButtonDiv}>
                     <div className={styles.mainStaticButtonDiv}>
                         <button className={`${styles.mainStaticButton} ${styles.tableButton}`}>Table</button>
-                        <button className={`${styles.mainStaticButton} ${styles.cancelButton}`}>Annuler</button>
+                        <button name='cancelButton' onClick={cancelProduct} className={`${styles.mainStaticButton} ${styles.cancelButton}`}>Annuler</button>
                         <button className={`${styles.mainStaticButton} ${styles.sendButton}`}>Envoyer</button>
                     </div>
                     <div className={styles.secondStaticButtonDiv}>
@@ -179,81 +157,4 @@ function Home() {
     );
 }
 
-
-
-
-const ListCard: React.FC<ListCardProps> = ({
-    categoryId,
-    subCategories,
-    handleCategoryClick,
-    handleProductClick,
-    data
-}) => {
-    return (
-        <div className={styles.variableButtonDiv}>
-            {categoryId === null ? (
-                subCategories.map((category) => (
-                    <button key={category.categoryId} onClick={() => handleCategoryClick(category)} className={styles.variableButton}>
-                        {category.name_category}
-                    </button>
-                ))
-            ) : (
-                data?.map((product) => (
-                    <button key={product.productId} onClick={() => handleProductClick(product)} className={styles.variableButton}>
-                        {product.name}
-                    </button>
-                ))
-            )}
-        </div>
-    );
-}
-
-const ExtraModal: React.FC<ExtraModalProps> = ({
-    selectedProduct,
-    setIsModalOpen,
-    isModalOpen,
-    addToOrder,
-    setSelectedExtras,
-    selectedExtras
-}) => {
-    if (!isModalOpen || !selectedProduct) return null;
-
-    return (
-        <div className={styles.modalOverlay}>
-            <div className={styles.modalExtra}>
-                <p>Suppléments {selectedProduct.name}</p>
-                <ul>
-                    {selectedProduct.extras.map((extra) => (
-                        <li key={extra.idExtra}>
-                            <ButtonExtra setSelectedExtras={setSelectedExtras} selectedExtras={selectedExtras} extra={extra} />
-                        </li>
-                    ))}
-                </ul>
-                <button onClick={() => {
-                    addToOrder(selectedProduct, selectedExtras);
-                    setIsModalOpen(false);
-                    setSelectedExtras([]);
-                }}>Valider</button>
-                <button onClick={() => setIsModalOpen(false)}>Fermer</button>
-            </div>
-        </div>
-    );
-};
-
-
-
-const ButtonExtra: React.FC<ButtonExtraProps> = ({ setSelectedExtras, selectedExtras, extra }) => {
-
-    const [countExtra, setCountExtra] = useState(0);
-
-    return (
-        <button onClick={() => {
-            setSelectedExtras([...selectedExtras, extra]),
-                setCountExtra(countExtra + 1);
-        }}>
-            {extra.extraName} {extra.extraPrice}€ {"x " + countExtra};
-        </button>
-    )
-}
-
-export default Home;
+export default CommandHub;

@@ -3,7 +3,7 @@ import Services from "../pages/Services";
 import Log from "../pages/Log";
 import ServicesProduit from "../pages/ServiceProduit";
 // import TestApi from "../pages/testApi";
-import Accueil from "../pages/CommandHub";
+import CommandHub from "../pages/CommandHub/CommandHub";
 import Recap from "../pages/Recap";
 import DetailCommande from "../pages/DetailCommande";
 import PrivateRoute from "../components/PrivateRoute";
@@ -18,9 +18,9 @@ const AppRouter = () => {
                 <Route path="/Log" element={<Log />} />
             
             <Route element={<PrivateRoute />}>
-                <Route path="/" element={<Accueil />} />
+                <Route path="/" element={<CommandHub />} />
                 <Route path="/users/:id" Component={GestionCompteUser} />
-                 
+
                 <Route path="/gestioncompteuser/:id" element={<GestionCompteUser />} />
 
                 <Route path="/gestioncompte" element={<GestionCompte />} />

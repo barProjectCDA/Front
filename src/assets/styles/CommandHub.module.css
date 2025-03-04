@@ -116,7 +116,12 @@ button{
 }
 
 .cancelButton{
-    background-color: #E86D6D;
+    background-color: #dd4d4d;
+    cursor: pointer;
+}
+
+.cancelButton:hover{
+    background-color: #e16f6f;
 }
 
 .sendButton{
