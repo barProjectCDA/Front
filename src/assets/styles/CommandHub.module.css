@@ -1,0 +1,187 @@
+button{
+    border-radius: 5px;
+    border: 0px;
+
+}
+
+.tableSection{
+    width: 100%;
+    height: calc(40vh - 60px);
+    min-height: 160px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.table{
+    display: flex;
+    flex-direction: column;
+    height: 90%;
+    background-color: #EFEFEF;
+    width: 100%;
+}
+
+.header{
+    font-weight: 300;
+    height: 20%;
+    max-height: 40px;
+    background-color: RGB(49, 68, 43);
+    color: #ffffff;
+    padding-inline: 10px;
+    justify-self: center;
+}
+
+.header p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;
+    font-size: 13px;
+}
+
+.overflowTable{
+    overflow-y: scroll;
+    height: 80%;
+}
+
+.row{
+    display: grid;
+    grid-template-columns: auto 1fr auto minmax(50px, 5%);
+    align-content: center;
+    min-height: 30px;
+    column-gap: 15px;
+    padding-inline: 15px;
+    cursor:default;
+}
+
+.row:focus{
+    background-color: #9DB5B2;
+    color: white;
+}
+
+
+.row p{
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+}
+
+.row.extra{
+    min-height: 15px;
+    font-style: italic;
+}
+
+.row.extra p {
+    font-size: 12px;
+}
+
+.columnProduct{
+    display: flex;
+    flex-direction: column;
+}
+
+.commandDetails{
+    display: flex;
+    width: 95%;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.staticButtonDiv{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    height: 40%;
+}
+
+.buttonSection{
+    height: calc(60vh - 15px);
+    width: 95%;
+    margin-block: 5px;
+}
+
+.mainStaticButtonDiv{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap:2px;
+    height: 35%;
+
+}
+
+.mainStaticButton{
+
+}
+
+.tableButton{
+    background-color: #989898;
+}
+
+.cancelButton{
+    background-color: #E86D6D;
+}
+
+.sendButton{
+    background-color: #438B2D;
+}
+
+.secondStaticButtonDiv{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 2px;
+    height: calc(65% - 2px);
+}
+
+.secondStaticButton{
+}
+
+.variableButtonDiv{
+    display: grid;
+    grid-template-columns: repeat(4, minmax(50px, auto));
+    grid-auto-rows: 1fr; 
+    margin-top: 2px;
+    gap: 2px;
+    height: calc(60%);
+}
+
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+
+.modalExtra{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    height: 50vh;
+    width: 40vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+    background-color:#dfdfdf;
+    border-radius: 10px;
+    /* box-shadow: #828282 -2px 2px 5px, #828282 2px 2px 5px; */
+}
+
+.modalExtra p {
+    text-align: center;
+    font-size: 16px;
+    text-decoration: underline 1px;
+}
+
+.modalExtra ul {
+    list-style-type: none;
+}
+
+
+

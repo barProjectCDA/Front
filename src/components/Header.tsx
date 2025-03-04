@@ -107,7 +107,7 @@ const BurgerMenu = ({isMobile, isOpen, toggleMenu, user, closing, handleLinkClic
                         </div>
 
                         <ul>
-                            <li onClick={handleLinkClick}> <Link to="/">Accueil </Link></li>
+                            <li onClick={handleLinkClick}> <Link to="/">Commandes </Link></li>
                             <li onClick={handleLinkClick}><Link to="/gestioncompte">Utilisateurs </Link></li>
                             <li onClick={handleLinkClick}><Link to="/Services">Services </Link></li>
                             <li onClick={handleLinkClick}><Link to="/log">Déconnexion </Link></li>
