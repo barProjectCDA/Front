@@ -9,6 +9,7 @@ import DetailCommande from "../pages/DetailCommande";
 import PrivateRoute from "../components/PrivateRoute";
 import GestionCompteUser from "../pages/GestionComptesUser";
 import GestionCompte from "../pages/GestionComptes";
+import ListingCommande from "../pages/listingCommande";
 
 
 const AppRouter = () => {
@@ -22,6 +23,7 @@ const AppRouter = () => {
                 <Route path="/users/:id" Component={GestionCompteUser} />
                  
                 <Route path="/gestioncompteuser/:id" element={<GestionCompteUser />} />
+                <Route path="/listingCommande" element={<ListingCommande />} />
 
                 <Route path="/gestioncompte" element={<GestionCompte />} />
                 <Route path="/Recap" element={<Recap  />} />

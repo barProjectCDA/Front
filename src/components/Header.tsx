@@ -42,13 +42,19 @@ const Header = () => {
         }
     };
 
-    return (
+    const commandePathName = location.pathname === "/" || location.pathname === "/listingCommande";
 
-        <header className={location.pathname !== "/" ? styles.header : styles.headerHome}>
-            {location.pathname === "/" && <NavBarHome isMobile={isMobile} isOpen={isOpen} toggleMenu={toggleMenu} user={user} closing={closing} handleLinkClick={handleLinkClick}/>}
-            {location.pathname !== "/"  && <NavBarBasic isMobile={isMobile} isOpen={isOpen} toggleMenu={toggleMenu} user={user} closing={closing} handleLinkClick={handleLinkClick} />
-            }
+    return (
+        
+
+
+        <header className={commandePathName ? styles.headerHome : styles.header}>
+           {commandePathName ? <NavBarHome isMobile={isMobile} isOpen={isOpen} toggleMenu={toggleMenu} user={user} closing={closing} handleLinkClick={handleLinkClick}/>:
+           <NavBarBasic isMobile={isMobile} isOpen={isOpen} toggleMenu={toggleMenu} user={user} closing={closing} handleLinkClick={handleLinkClick} />}
+            
+            
         </header>
+        
     );
 };
 
@@ -78,7 +84,7 @@ const NavBarHome = ({ isMobile, isOpen, toggleMenu, user, closing, handleLinkCli
                 }
                 <div className={`${styles.divButtonTitle}`}>
                     <button className={`${styles.buttonHeader}`}>Tony</button>
-                    <button className={`${styles.buttonHeader}`}><Link to="/commandes" className={styles.commandebtn}>Commandes</Link></button>
+                    <button className={`${styles.buttonHeader}`}><Link to="/listingCommande" className={styles.commandebtn}>Commandes</Link></button>
                 </div>
 
             </nav>
