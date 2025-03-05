@@ -2,6 +2,7 @@ export interface Category {
     categoryId: number;
     name_category: string;
     subCategories: Category[];
+    cssHexadecimalColor: string;
 }
 
 export interface Extra {
@@ -15,6 +16,7 @@ export interface Product {
     name: string;
     price: number;
     extras: Extra[];
+    cssHexadecimalColor: string;
 }
 
 export interface FetchProduct {
@@ -22,3 +24,7 @@ export interface FetchProduct {
     error: String | null;
     loading: boolean
 }
+
+export interface ModalState { isOpen: boolean; type?: ModalType;}
+
+export type ModalType = "none"|"extra"|"table";

@@ -117,16 +117,23 @@ button{
 }
 
 .tableButton{
-    background-color: #989898;
-}
-
-.cancelButton{
-    background-color: #dd4d4d;
+    background-color: #232222;
+    color: #EFEFEF;
     cursor: pointer;
 }
 
+.tableButton:hover{    
+    background-color: #4f4d4d;
+}
+
+.cancelButton{
+    background-color: #e41616;
+    cursor: pointer;
+    color: #EFEFEF;
+}
+
 .cancelButton:hover{
-    background-color: #e16f6f;
+    background-color: #dd4d4d;
 }
 
 .sendButton{
@@ -141,6 +148,8 @@ button{
 }
 
 .secondStaticButton{
+    color: white;
+    font-weight: 400;
 }
 
 .variableButtonDiv{
@@ -150,6 +159,11 @@ button{
     margin-top: 2px;
     gap: 2px;
     height: calc(60%);
+    
+}
+
+.variableButton{
+    color: white;
 }
 
 .modalOverlay {

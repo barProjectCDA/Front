@@ -19,13 +19,13 @@ export const ListCard: React.FC<ListCardProps> = ({
         <div className={styles.variableButtonDiv}>
             {categoryId === null ? (
                 subCategories.map((category) => (
-                    <button key={category.categoryId} onClick={() => handleCategoryClick(category)} className={styles.variableButton}>
+                    <button style={{backgroundColor: category.cssHexadecimalColor}} key={category.categoryId} onClick={() => handleCategoryClick(category)} className={styles.variableButton}>
                         {category.name_category}
                     </button>
                 ))
             ) : (
                 data?.map((product) => (
-                    <button key={product.productId} onClick={() => handleProductClick(product)} className={styles.variableButton}>
+                    <button style={{backgroundColor: product.cssHexadecimalColor}} key={product.productId} onClick={() => handleProductClick(product)} className={styles.variableButton}>
                         {product.name}
                     </button>
                 ))

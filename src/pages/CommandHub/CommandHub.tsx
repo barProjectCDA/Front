@@ -2,9 +2,10 @@ import { useEffect, useState } from 'react';
 import styles from '../../assets/styles/CommandHub.module.css'
 import { Method, useFetch } from '../../hooks/Fetch';
 import React from 'react';
-import { ExtraModal } from './ExtraModal';
+import { ExtraModal } from './Modal/ExtraModal';
 import { ListCard } from './ListCard';
-import { Category, Product, Extra} from './interfaces';
+import { Category, Product, Extra, ModalState } from './interfaces';
+import { TableModal } from './Modal/TableModal';
 
 function CommandHub() {
     const [searchCategoryId, setSearchCategoryId] = useState<number | null>(null);
@@ -12,11 +13,12 @@ function CommandHub() {
     const { runFetch: fetchProduct, loading: loadingProduct, error: errorProduct, data: dataProduct, setData: setDataProduct } = useFetch<Product[]>(`http://localhost:8081/product/category/${searchCategoryId}`, Method.Get);
     const { runFetch, loading, error, data } = useFetch<Category[]>("http://localhost:8081/category", Method.Get);
     const [order, setOrder] = useState<Product[]>([]);
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [modalState, setModalState] = useState<ModalState>({ isOpen: false, type: "none" });
     const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
     const [selectedExtras, setSelectedExtras] = useState<Extra[]>([]);
-    const [selectedIndex, setSelectedIndex] = useState<Number | null>(null);
-    const [selectedIndexExtra, setSelectedIndexExtra] = useState<Number | null>(null);
+    const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+    const [selectedIndexExtra, setSelectedIndexExtra] = useState<number | null>(null);
+    const [commandTable, setCommandTable] = useState<number>(0)
 
     const handleCategoryClick = (category: Category) => {
         if (category.subCategories && category.subCategories.length > 0) {
@@ -33,7 +35,7 @@ function CommandHub() {
         setSelectedProduct(product);
 
         if (product.extras.length > 0) {
-            setIsModalOpen(true);
+            setModalState({ isOpen: true, type: "extra" });
         } else {
             addToOrder(product, []);
         }
@@ -47,6 +49,7 @@ function CommandHub() {
         };
         setOrder(prevOrder => [...prevOrder, updatedProduct]);
     };
+
 
     const calculateTotalPriceProduct = (product: Product) => {
         return product.price + product.extras.reduce((sum, extra) => sum + extra.extraPrice, 0);
@@ -119,17 +122,17 @@ function CommandHub() {
                         <div className={styles.columnPrice}><p>Prix</p></div>
                         <div className={styles.columnState}><p>Payé</p></div>
                     </div>
-                    <div onBlur={resetSelectedIndex } className={styles.overflowTable}>
+                    <div onBlur={resetSelectedIndex} className={styles.overflowTable}>
                         {order.map((product, index) => (
                             <React.Fragment key={index}>
-                                <div onFocus={() => { {setSelectedIndex(index), console.log(selectedIndex, selectedIndexExtra) } }} tabIndex={0} key={index} className={`${styles.row} ${styles.product}`}>
+                                <div onFocus={() => { { setSelectedIndex(index), console.log(selectedIndex, selectedIndexExtra) } }} tabIndex={0} key={index} className={`${styles.row} ${styles.product}`}>
                                     <div className={styles.columnNumber}><p>{index + 1}</p></div>
                                     <div className={styles.columnProduct}><p>{product.name}</p></div>
                                     <div className={styles.columnPrice}><p>{calculateTotalPriceProduct(product)} €</p></div>
                                     <div className={styles.columnState}><p>Non payé</p></div>
                                 </div>
                                 {product.extras.map((extra, indexExtra) => (
-                                    <div id='extraDiv' onFocus={() => {setSelectedIndex(index), setSelectedIndexExtra(indexExtra), console.log("IndexProduit: " + selectedIndex, "IndexExtra: " + selectedIndexExtra)}} tabIndex={0} key={indexExtra} className={`${styles.row} ${styles.extra}`} >
+                                    <div id='extraDiv' onFocus={() => { setSelectedIndex(index), setSelectedIndexExtra(indexExtra), console.log("IndexProduit: " + selectedIndex, "IndexExtra: " + selectedIndexExtra) }} tabIndex={0} key={indexExtra} className={`${styles.row} ${styles.extra}`} >
                                         <div className={styles.columnNumber}></div>
                                         <div className={styles.columnExtra}><p>Supplement {extra.extraName}</p></div>
                                         <div className={styles.columnPrice}><p>{extra.extraPrice} €</p></div>
@@ -142,28 +145,34 @@ function CommandHub() {
                     </div>
                 </div>
                 <div className={styles.commandDetails}>
-                    <p className={styles.tableInfo}>Table: 1</p>
+                    <p className={styles.tableInfo}>Table: {commandTable}</p>
                     <p className={styles.totalPrice}>Total: {calculateTotalPrice().toFixed(2)} €</p>
                 </div>
-                <ExtraModal
-                    selectedProduct={selectedProduct}
-                    addToOrder={addToOrder}
-                    setIsModalOpen={setIsModalOpen}
-                    isModalOpen={isModalOpen}
+                <TableModal
+                    setModalState={setModalState}
+                    modalState={modalState}
+                    setCommandTable={setCommandTable}
+                    commandTable={commandTable}
+                />
+                {selectedProduct !== null && <ExtraModal
+                    modalState={modalState}
                     selectedExtras={selectedExtras}
                     setSelectedExtras={setSelectedExtras}
-                />
+                    selectedProduct={selectedProduct}
+                    setModalState={setModalState}
+                    addToOrder={addToOrder} />
+                }
             </section>
             <section className={styles.buttonSection}>
                 <div className={styles.staticButtonDiv}>
                     <div className={styles.mainStaticButtonDiv}>
-                        <button className={`${styles.mainStaticButton} ${styles.tableButton}`}>Table</button>
+                        <button onClick={() => setModalState({ isOpen: true, type: "table" })} className={`${styles.mainStaticButton} ${styles.tableButton}`}>Table</button>
                         <button name='cancelButton' onClick={cancelProduct} className={`${styles.mainStaticButton} ${styles.cancelButton}`}>Annuler</button>
                         <button className={`${styles.mainStaticButton} ${styles.sendButton}`}>Envoyer</button>
                     </div>
                     <div className={styles.secondStaticButtonDiv}>
                         {data?.map((category) => (
-                            <button key={category.categoryId} onClick={() => handleCategoryClick(category)} className={styles.secondStaticButton}>
+                            <button style={{backgroundColor: category.cssHexadecimalColor}} key={category.categoryId} onClick={() => handleCategoryClick(category)} className={styles.secondStaticButton}>
                                 {category.name_category}
                             </button>
                         ))}
