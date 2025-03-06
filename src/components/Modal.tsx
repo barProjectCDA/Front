@@ -17,10 +17,14 @@ export const Modal: React.FC<ModalProps> = ({children, title, modalState, setMod
     }
     return (
         <div className={styles.modalOverlay}>
-            <div className={styles.modalExtra}>
-                <p>{title}</p>
-                {children}
-            <button onClick={() => setModalState({isOpen: false})} className={styles.buttonCloseModal}>Ferme</button>
+            <div className={styles.modal}>
+                <div className={styles.headerModal}>
+                    <p>{title}</p>
+                </div>
+                <div className={styles.contentModal}>
+                    {children}
+                </div>
+                <div className={styles.footerModal}></div>
             </div>
         </div>
     );

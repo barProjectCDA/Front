@@ -19,15 +19,19 @@ function CommandHub() {
     const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
     const [selectedIndexExtra, setSelectedIndexExtra] = useState<number | null>(null);
     const [commandTable, setCommandTable] = useState<number>(0)
+    const [currentPageProduct, setCurrentPageProduct] = useState<number>(1);
 
     const handleCategoryClick = (category: Category) => {
+        if (searchCategoryId !== null && searchCategoryId == category.categoryId) {
+            return;
+        }
         if (category.subCategories && category.subCategories.length > 0) {
             setSubcategories(category.subCategories);
             setSearchCategoryId(null);
         } else {
-            setDataProduct(null);
             setSubcategories([]);
             setSearchCategoryId(category.categoryId);
+            setDataProduct(null);
         }
     };
 
@@ -129,7 +133,7 @@ function CommandHub() {
                                     <div className={styles.columnNumber}><p>{index + 1}</p></div>
                                     <div className={styles.columnProduct}><p>{product.name}</p></div>
                                     <div className={styles.columnPrice}><p>{calculateTotalPriceProduct(product)} €</p></div>
-                                    <div className={styles.columnState}><p>Non payé</p></div>
+                                    <div className={styles.columnState}><p>X</p></div>
                                 </div>
                                 {product.extras.map((extra, indexExtra) => (
                                     <div id='extraDiv' onFocus={() => { setSelectedIndex(index), setSelectedIndexExtra(indexExtra), console.log("IndexProduit: " + selectedIndex, "IndexExtra: " + selectedIndexExtra) }} tabIndex={0} key={indexExtra} className={`${styles.row} ${styles.extra}`} >
@@ -145,16 +149,18 @@ function CommandHub() {
                     </div>
                 </div>
                 <div className={styles.commandDetails}>
-                    <p className={styles.tableInfo}>Table: {commandTable}</p>
-                    <p className={styles.totalPrice}>Total: {calculateTotalPrice().toFixed(2)} €</p>
+                        <p className={styles.tableInfo}>Table: {commandTable}</p>
+                        <p className={styles.totalPrice}>Total: {calculateTotalPrice().toFixed(2)} €</p>
                 </div>
-                <TableModal
+                {modalState.type === "table" && <TableModal
                     setModalState={setModalState}
                     modalState={modalState}
                     setCommandTable={setCommandTable}
                     commandTable={commandTable}
-                />
-                {selectedProduct !== null && <ExtraModal
+                />}
+                {selectedProduct !== null &&
+                modalState.type === "extra" &&
+                 <ExtraModal
                     modalState={modalState}
                     selectedExtras={selectedExtras}
                     setSelectedExtras={setSelectedExtras}
@@ -172,7 +178,7 @@ function CommandHub() {
                     </div>
                     <div className={styles.secondStaticButtonDiv}>
                         {data?.map((category) => (
-                            <button style={{backgroundColor: category.cssHexadecimalColor}} key={category.categoryId} onClick={() => handleCategoryClick(category)} className={styles.secondStaticButton}>
+                            <button style={{backgroundColor: category.cssHexadecimalColor}} key={category.categoryId} onClick={() => {handleCategoryClick(category); setCurrentPageProduct(1)}} className={styles.secondStaticButton}>
                                 {category.name_category}
                             </button>
                         ))}
@@ -186,6 +192,8 @@ function CommandHub() {
                     data={dataProduct}
                     error={errorProduct}
                     loading={loadingProduct}
+                    currentPageProduct={currentPageProduct}
+                    setCurrentPageProduct={setCurrentPageProduct}
                 />
             </section>
         </>

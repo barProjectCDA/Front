@@ -1,7 +1,13 @@
 button{
     border-radius: 5px;
     border: 0px;
+    cursor: pointer;
+    color: white;
+    font-size: clamp(1rem, 2.5vh, 1.2rem);
+}
 
+button:hover{
+    filter: brightness(95%);
 }
 
 .tableSection{
@@ -11,6 +17,7 @@ button{
     display: flex;
     align-items: center;
     flex-direction: column;
+    gap:2%;
 }
 
 .table{
@@ -32,7 +39,6 @@ button{
 }
 
 .header p {
-    font-family: Arial, Helvetica, sans-serif;
     font-style: italic;
     font-size: 13px;
 }
@@ -65,8 +71,7 @@ button{
 
 .row p{
     height: 100%;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 13px;
+    font-size: clamp(1rem, 2.5vh, 1.5rem);
 }
 
 .row.extra{
@@ -87,8 +92,10 @@ button{
     display: flex;
     width: 95%;
     justify-content: space-between;
-    font-size: 14px;
-    margin-top: 5px;
+    align-items: center;
+    font-size: clamp(1rem, 2.5vh, 1.5rem);
+    height: 10%;
+    position: relative;
 }
 
 .staticButtonDiv{
@@ -99,7 +106,10 @@ button{
 }
 
 .buttonSection{
-    height: calc(60vh - 15px);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    height: calc(60vh - 17px);
     width: 95%;
     margin-block: 5px;
 }
@@ -108,7 +118,7 @@ button{
     display: grid;
     grid-template-columns: auto auto auto;
     gap:2px;
-    height: 35%;
+    height: 30%;
 
 }
 
@@ -118,22 +128,10 @@ button{
 
 .tableButton{
     background-color: #232222;
-    color: #EFEFEF;
-    cursor: pointer;
-}
-
-.tableButton:hover{    
-    background-color: #4f4d4d;
 }
 
 .cancelButton{
     background-color: #e41616;
-    cursor: pointer;
-    color: #EFEFEF;
-}
-
-.cancelButton:hover{
-    background-color: #dd4d4d;
 }
 
 .sendButton{
@@ -144,7 +142,7 @@ button{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 2px;
-    height: calc(65% - 2px);
+    height: calc(70% - 2px);
 }
 
 .secondStaticButton{
@@ -154,16 +152,22 @@ button{
 
 .variableButtonDiv{
     display: grid;
-    grid-template-columns: repeat(4, minmax(50px, auto));
-    grid-auto-rows: 1fr; 
+    grid-template-columns: repeat(4, minmax(50px, 25%));
+    grid-template-rows: repeat(4, minmax(40px, 25%));
     margin-top: 2px;
-    gap: 2px;
+    gap: 3px;
     height: calc(60%);
     
 }
 
-.variableButton{
-    color: white;
+.nextButtonProduct{
+    background-color: #464444;
+    grid-area: 4 / 4 / 4 / 4;
+}
+
+.previousButtonProduct{
+    background-color: #464444;
+    grid-area: 4 / 1 / 4 / 1;
 }
 
 .modalOverlay {
@@ -180,32 +184,107 @@ button{
 }
 
 
-.modalExtra{
+.modal{
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    height: 50vh;
-    width: 40vw;
+    height: 40vh;
+    width: 80vw;
+    max-height: 800px;
+    max-width: 400px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     gap: 5%;
     background-color:#dfdfdf;
     border-radius: 10px;
-    /* box-shadow: #828282 -2px 2px 5px, #828282 2px 2px 5px; */
 }
 
-.modalExtra p {
-    text-align: center;
-    font-size: 16px;
-    text-decoration: underline 1px;
+.contentModal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex:1;
+    width: 90%;
 }
 
-.modalExtra ul {
-    list-style-type: none;
+.headerModal{
+    height: 15%;
+    max-height: 300px;
+    width: 100%;
+    background-color: #31442B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border-radius: 10px 10px 0px 0px;
+    font-size: clamp(1rem, 3vh, 1.8rem);
 }
 
+.footerModal{
+}
 
+.tableInput{
+    width: 70%;
+    max-width: 200px;
+    height: 25%;
+    max-height: 75px;
+    font-size: clamp(1.5rem, 5vh, 2.5rem);
+    border-radius: 4px;
+    border: 2px solid  #908e8e;
+    color: #908e8e;
+}
+
+.tableInput:focus{
+    outline: none;
+}
+
+.contentTableModal, .contentExtraModal{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15%;
+    height: 100%;
+    width: 100%;
+}
+
+.buttonDivTableModal{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.buttonValidateTableModal{
+    padding: 5px 10px;
+    background-color: #4c5848;
+}
+
+.buttonCloseTableModal{
+    padding: 5px 10px;
+    background-color: #464444;
+}
+
+.buttonDivTableModal{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.buttonExtra{
+    width: 100%;
+}
+
+.listExtrasUl{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.listExtrasUl li {
+    width: 25%;
+}
 
