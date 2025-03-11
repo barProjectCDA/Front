@@ -11,6 +11,6 @@ RUN npm run build
 
 # Etape 2 : utilisation d'une image de serveur http pour servir le site précompilé
 FROM nginx:1.25.1-alpine
-EXPOSE 80
+EXPOSE 8080
 COPY --chown=nginx:nginx nginx-ui.conf /etc/nginx/conf.d/default.conf
 COPY --chown=nginx:nginx --from=builder /cactus-front/dist /var/www/html/
