@@ -10,8 +10,8 @@ import { TableModal } from './Modal/TableModal';
 function CommandHub() {
     const [searchCategoryId, setSearchCategoryId] = useState<number | null>(null);
     const [subCategories, setSubcategories] = useState<Category[]>([]);
-    const { runFetch: fetchProduct, loading: loadingProduct, error: errorProduct, data: dataProduct, setData: setDataProduct } = useFetch<Product[]>(`http://137.74.194.16/api/product/category/${searchCategoryId}`, Method.Get);
-    const { runFetch, loading, data } = useFetch<Category[]>("http://137.74.194.16/api/category", Method.Get);
+    const { runFetch: fetchProduct, loading: loadingProduct, error: errorProduct, data: dataProduct, setData: setDataProduct } = useFetch<Product[]>(`https://137.74.194.16/api/product/category/${searchCategoryId}`, Method.Get);
+    const { runFetch, loading, data } = useFetch<Category[]>("https://137.74.194.16/api/category", Method.Get);
     const [order, setOrder] = useState<Product[]>([]);
     const [modalState, setModalState] = useState<ModalState>({ isOpen: false, type: "none" });
     const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);

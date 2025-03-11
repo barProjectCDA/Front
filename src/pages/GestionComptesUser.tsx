@@ -16,7 +16,7 @@ const GestionCompteUser = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch(`http://137.74.194.16/api/users/${id}`);
+        const response = await fetch(`https://137.74.194.16/api/users/${id}`);
         if (!response.ok) {
           throw new Error("Utilisateur non trouvé");
         }
