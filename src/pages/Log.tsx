@@ -9,7 +9,8 @@ import { useAuth } from '../context/Authentication/useAuth';
 export default function Log() {
     const user = useAuth();
     const navigate = useNavigate();
-    const { runFetch, loading } = useFetch<string>("https://137.74.194.16/api/auth/login", Method.Post);
+    const url = import.meta.env.VITE_APP_URL
+    const { runFetch, loading } = useFetch<string>(`${url}/api/auth/login`, Method.Post);
     const [username, setUsername] = useState<string>('');
     const [password, setPassword] = useState<string>('');
 

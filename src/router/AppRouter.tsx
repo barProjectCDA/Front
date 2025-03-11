@@ -19,7 +19,7 @@ const AppRouter = () => {
                 <Route path="/Log" element={<Log />} />
             
             <Route element={<PrivateRoute />}>
-                <Route path="/" element={<CommandHub />} />
+                <Route path="/" element={<CommandHub/>} />
                 <Route path="/users/:id" Component={GestionCompteUser} />
 
                 <Route path="/gestioncompteuser/:id" element={<GestionCompteUser />} />

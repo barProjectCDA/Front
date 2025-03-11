@@ -9,6 +9,8 @@ interface User {
   username: string;
 }
 
+const url = import.meta.env.VITE_APP_URL
+
 const GestionCompteUser = () => {
   const { id } = useParams<{ id: string }>();
   const [user, setUser] = useState<User | null>(null);
@@ -16,7 +18,7 @@ const GestionCompteUser = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch(`https://137.74.194.16/api/users/${id}`);
+        const response = await fetch(`${url}/api/users/${id}`);
         if (!response.ok) {
           throw new Error("Utilisateur non trouvé");
         }
