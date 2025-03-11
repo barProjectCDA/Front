@@ -10,9 +10,18 @@ button:hover{
     filter: brightness(95%);
 }
 
+.mainSection{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 60px);
+}
+
 .tableSection{
     width: 100%;
-    height: calc(40vh - 60px);
+    height: 40%;
     min-height: 160px;
     display: flex;
     align-items: center;
@@ -109,7 +118,7 @@ button:hover{
     display: flex;
     flex-direction: column;
     gap: 2px;
-    height: calc(60vh - 17px);
+    height: calc(60% - 17px);
     width: 95%;
     margin-block: 5px;
 }
@@ -288,3 +297,9 @@ button:hover{
     width: 25%;
 }
 
+@media screen and (min-width: 900px) {
+    
+    .mainSection{
+        flex-direction: row;
+    }
+}

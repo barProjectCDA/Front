@@ -9,7 +9,7 @@ import { useAuth } from '../context/Authentication/useAuth';
 export default function Log() {
     const user = useAuth();
     const navigate = useNavigate();
-    const { runFetch, loading } = useFetch<string>("http://localhost:8081/auth/login", Method.Post);
+    const { runFetch, loading } = useFetch<string>("http://localhost:8081/api/auth/login", Method.Post);
     const [username, setUsername] = useState<string>('');
     const [password, setPassword] = useState<string>('');
 

@@ -38,7 +38,7 @@ const GestionCompte = () => {
           </div>
 
           <div className={styles.categoriesContainer}>
-            {users.map((user: User, index) => (
+            {users.map((user: User) => (
               <Link
                 key={user.userId}
                 to={`/gestioncompteuser/${user.userId}`}

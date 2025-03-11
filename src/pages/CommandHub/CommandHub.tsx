@@ -10,8 +10,8 @@ import { TableModal } from './Modal/TableModal';
 function CommandHub() {
     const [searchCategoryId, setSearchCategoryId] = useState<number | null>(null);
     const [subCategories, setSubcategories] = useState<Category[]>([]);
-    const { runFetch: fetchProduct, loading: loadingProduct, error: errorProduct, data: dataProduct, setData: setDataProduct } = useFetch<Product[]>(`http://localhost:8081/product/category/${searchCategoryId}`, Method.Get);
-    const { runFetch, loading, error, data } = useFetch<Category[]>("http://localhost:8081/category", Method.Get);
+    const { runFetch: fetchProduct, loading: loadingProduct, error: errorProduct, data: dataProduct, setData: setDataProduct } = useFetch<Product[]>(`http://localhost:8081/api/product/category/${searchCategoryId}`, Method.Get);
+    const { runFetch, loading, data } = useFetch<Category[]>("http://localhost:8081/api/category", Method.Get);
     const [order, setOrder] = useState<Product[]>([]);
     const [modalState, setModalState] = useState<ModalState>({ isOpen: false, type: "none" });
     const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
@@ -118,6 +118,7 @@ function CommandHub() {
 
     return (
         <>
+        <section className={styles.mainSection}>
             <section className={styles.tableSection}>
                 <div className={styles.table}>
                     <div className={`${styles.header} ${styles.row}`}>
@@ -196,6 +197,7 @@ function CommandHub() {
                     setCurrentPageProduct={setCurrentPageProduct}
                 />
             </section>
+        </section>
         </>
     );
 }

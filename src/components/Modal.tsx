@@ -9,7 +9,7 @@ interface ModalProps {
     setModalState: React.Dispatch<React.SetStateAction<ModalState>>;
 }
 
-export const Modal: React.FC<ModalProps> = ({children, title, modalState, setModalState
+export const Modal: React.FC<ModalProps> = ({children, title, modalState,
 
 }) => {
     if (!modalState.isOpen) {

@@ -54,7 +54,7 @@ function Home() {
     const [searchCategoryId, setSearchCategoryId] = useState<number | null>(null);
     const [subCategories, setSubcategories] = useState<Category[]>([]);
     const { runFetch: fetchProduct, loading: loadingProduct, error: errorProduct, data: dataProduct, setData: setDataProduct } = useFetch<Product[]>(`http://localhost:8081/product/category/${searchCategoryId}`, Method.Get);
-    const { runFetch, loading, error, data } = useFetch<Category[]>("http://localhost:8081/category", Method.Get);
+    const { runFetch, loading, data } = useFetch<Category[]>("http://localhost:8081/category", Method.Get);
     const [order, setOrder] = useState<Product[]>([]);
     const [totalPrice, setTotalPrice] = useState<number>(0);
     const [isModalOpen, setIsModalOpen] = useState(false);
