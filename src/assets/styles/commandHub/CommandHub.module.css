@@ -54,7 +54,7 @@ button:hover{
 
 .overflowTable{
     overflow-y: scroll;
-    height: 80%;
+    height: 100%;
 }
 
 .row{
@@ -159,147 +159,42 @@ button:hover{
     font-weight: 400;
 }
 
-.variableButtonDiv{
-    display: grid;
-    grid-template-columns: repeat(4, minmax(50px, 25%));
-    grid-template-rows: repeat(4, minmax(40px, 25%));
-    margin-top: 2px;
-    gap: 3px;
-    height: calc(60%);
-    
-}
-
-.nextButtonProduct{
-    background-color: #464444;
-    grid-area: 4 / 4 / 4 / 4;
-}
-
-.previousButtonProduct{
-    background-color: #464444;
-    grid-area: 4 / 1 / 4 / 1;
-}
-
-.modalOverlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-}
-
-
-.modal{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    height: 40vh;
-    width: 80vw;
-    max-height: 800px;
-    max-width: 400px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5%;
-    background-color:#dfdfdf;
-    border-radius: 10px;
-}
-
-.contentModal{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    flex:1;
-    width: 90%;
-}
-
-.headerModal{
-    height: 15%;
-    max-height: 300px;
-    width: 100%;
-    background-color: #31442B;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    border-radius: 10px 10px 0px 0px;
-    font-size: clamp(1rem, 3vh, 1.8rem);
-}
-
-.footerModal{
-}
-
-.tableInput{
-    width: 70%;
-    max-width: 200px;
-    height: 25%;
-    max-height: 75px;
-    font-size: clamp(1.5rem, 5vh, 2.5rem);
-    border-radius: 4px;
-    border: 2px solid  #908e8e;
-    color: #908e8e;
-}
-
 .tableInput:focus{
     outline: none;
-}
-
-.contentTableModal, .contentExtraModal{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 15%;
-    height: 100%;
-    width: 100%;
-}
-
-.buttonDivTableModal{
-    width: 100%;
-    display: flex;
-    justify-content: space-evenly;
-}
-
-.buttonValidateTableModal{
-    padding: 5px 10px;
-    background-color: #4c5848;
-}
-
-.buttonCloseTableModal{
-    padding: 5px 10px;
-    background-color: #464444;
-}
-
-.buttonDivTableModal{
-    width: 100%;
-    display: flex;
-    justify-content: space-evenly;
 }
 
 .buttonExtra{
     width: 100%;
 }
 
-.listExtrasUl{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
 
-.listExtrasUl li {
-    width: 25%;
-}
 
 @media screen and (min-width: 900px) {
     
     .mainSection{
         flex-direction: row;
+        justify-content: space-between;
+        height: calc(100vh - 60px);
+        width: 94%;
+        max-width: 1800px;
+    }
+
+    .tableSection{
+        width: 45%;
+        height: 80%;
+    }
+
+    .buttonSection{
+        width: 45%;
+        height: 80%;
+        margin-top: 0;
+    }
+
+    .table{
+        border-radius: 8px;
+    }
+
+    .header{
+        border-radius: 8px 8px 0px 0px;
     }
 }

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
-import styles from '../../../assets/styles/CommandHub.module.css'
 import { Modal } from '../../../components/Modal';
 import { ModalState } from '../interfaces';
+import styles from '../../../assets/styles/commandHub/modals/TableModal.module.css'
 
 interface PropsContentTableModal {
     setCommandTable: (numberTable: number) => void;

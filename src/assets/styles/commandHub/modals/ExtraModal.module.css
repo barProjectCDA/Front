@@ -1,0 +1,42 @@
+.contentExtraModal{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15%;
+}
+
+.listExtrasUl{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    gap:10px
+}
+
+.listExtrasUl li {
+    max-width: 80px;
+    aspect-ratio: 2/2;
+}
+
+.listExtrasUl li button {
+    width: 100%;
+    height: 100%;
+    background-color: #4a5f43;
+}
+
+.buttonDivExtraModal{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.buttonValidateExtraModal{
+    padding: 5px 10px;
+    background-color: #4c5848;
+}
+
+.buttonCloseExtraModal{
+    padding: 5px 10px;
+    background-color: #464444;
+}

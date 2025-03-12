@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import styles from '../../assets/styles/CommandHub.module.css'
+import styles from '../../assets/styles/CommandHub/ListCard.module.css'
 import { FetchProduct, Category, Product } from './interfaces';
 
 interface ListCardProps extends FetchProduct {

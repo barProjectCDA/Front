@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import styles from '../assets/styles/CommandHub.module.css'
+import styles from '../assets/styles/Modal.module.css'
 import { ModalState } from '../pages/CommandHub/interfaces';
 
 interface ModalProps {

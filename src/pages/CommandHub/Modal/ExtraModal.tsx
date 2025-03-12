@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Product, Extra, ModalState } from '../interfaces';
 import { Modal } from '../../../components/Modal';
-import styles from '../../../assets/styles/CommandHub.module.css'
+import styles from '../../../assets/styles/commandHub/modals/ExtraModal.module.css'
 
 interface ExtraModalContent {
     selectedProduct: Product;
@@ -31,12 +31,12 @@ export const ExtraModal: React.FC<ExtraModalContent> = ({ selectedProduct, setSe
                     ))}
                 </ul>
                 <div className={styles.buttonDivExtraModal}>
-                    <button onClick={() => {
+                    <button className={styles.buttonValidateExtraModal} onClick={() => {
                         { addToOrder(selectedProduct, selectedExtras) };
                         setModalState({ isOpen: false, type: "none" });
                         setSelectedExtras([]);
                     }}>Valider</button>
-                    <button onClick={() => { setModalState({ isOpen: false }); setSelectedExtras([]); setModalState({ isOpen: false, type: "none" }); }} className={styles.buttonCloseModal}>Ferme</button>
+                    <button className={styles.buttonCloseExtraModal} onClick={() => { setModalState({ isOpen: false }); setSelectedExtras([]); setModalState({ isOpen: false, type: "none" }); }}>Annuler</button>
                 </div>
             </div>
         </Modal>

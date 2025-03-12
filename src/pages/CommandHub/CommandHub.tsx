@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import styles from '../../assets/styles/CommandHub.module.css'
+import styles from '../../assets/styles/commandHub/CommandHub.module.css'
 import { Method, useFetch } from '../../hooks/Fetch';
 import React from 'react';
 import { ExtraModal } from './Modal/ExtraModal';
@@ -21,6 +21,7 @@ function CommandHub() {
     const [selectedIndexExtra, setSelectedIndexExtra] = useState<number | null>(null);
     const [commandTable, setCommandTable] = useState<number>(0)
     const [currentPageProduct, setCurrentPageProduct] = useState<number>(1);
+    // const [{runFetch: fetchTable}]
 
     const handleCategoryClick = (category: Category) => {
         if (searchCategoryId !== null && searchCategoryId == category.categoryId) {
@@ -37,6 +38,11 @@ function CommandHub() {
     };
 
     const handleProductClick = (product: Product) => {
+
+        if (commandTable == 0) {
+            setModalState({isOpen: true, type: "table"})
+        }
+
         setSelectedProduct(product);
 
         if (product.extras.length > 0) {
@@ -45,6 +51,10 @@ function CommandHub() {
             addToOrder(product, []);
         }
     };
+
+    const handleSendClick = () => {
+        console.log(order);
+    }
 
     const addToOrder = (product: Product, selectedExtras: Extra[]) => {
         const updatedProduct = {
@@ -176,7 +186,7 @@ function CommandHub() {
                     <div className={styles.mainStaticButtonDiv}>
                         <button onClick={() => setModalState({ isOpen: true, type: "table" })} className={`${styles.mainStaticButton} ${styles.tableButton}`}>Table</button>
                         <button name='cancelButton' onClick={cancelProduct} className={`${styles.mainStaticButton} ${styles.cancelButton}`}>Annuler</button>
-                        <button className={`${styles.mainStaticButton} ${styles.sendButton}`}>Envoyer</button>
+                        <button className={`${styles.mainStaticButton} ${styles.sendButton}`} onClick={handleSendClick}>Envoyer</button>
                     </div>
                     <div className={styles.secondStaticButtonDiv}>
                         {data?.map((category) => (
